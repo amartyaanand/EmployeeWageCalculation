@@ -6,24 +6,33 @@ namespace EmployeeWage
     {
         static void Main(string[] args)
         {
-            int empMonWage = 0, isPresent = 1, empDailyHrs = 8, empDailyWage = 20, presentDays = 0, absentDays = 0;
+            int empMonWage = 0, isPresent = 1, empDailyWage = 20, presentDays = 0, absentDays = 0;
             Random random = new Random();
             int checkValue;
 
-            for (int i = 0; i < 20; i++)
+
+
+            for (int days = 0, hrs = 0; days < 20 && hrs < 100;)
             {
-                //using random to check employees daily attendance
                 checkValue = random.Next(2);
                 if (checkValue == isPresent)
                 {
+                    hrs += 8;
+
+                    if (hrs > 100)
+                        break;
+
+                    days++;
                     presentDays++;
-                    empMonWage += empDailyWage * empDailyHrs;
+                    empMonWage += empDailyWage;
                 }
                 else
+                {
                     absentDays++;
+                }
             }
-            Console.WriteLine($"Employee Attendance \nTotal working days per month 20 \nPresent for {presentDays} \nAbsent for {absentDays}");
-            Console.WriteLine("Employee's monthly wage is : " + empMonWage);
+            Console.WriteLine($"Employee worked for {presentDays * 8} hours OR {presentDays} days out of {presentDays + absentDays} days");
+            Console.WriteLine("Employee wage is : " + empMonWage);
         }
     }
 }
