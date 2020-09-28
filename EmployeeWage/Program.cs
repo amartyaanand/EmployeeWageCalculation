@@ -6,8 +6,6 @@ namespace EmployeeWage
     {
         static void Main(string[] args)
         {
-
-
             int isPresent = 1;
             int dailyWage, dailyHours;
 
