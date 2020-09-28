@@ -6,27 +6,33 @@ namespace EmployeeWage
     {
         static void Main(string[] args)
         {
-            int isPresent = 1;
-            int dailyWage, dailyHours;
-
             Random random = new Random();
-
             int checkValue = random.Next(2);
+            int empDailyWage = 20, empDailyHrs = 0, pEmpDailyHrs = 0;
 
-            if (checkValue == isPresent)
+            switch (checkValue)
             {
-                dailyHours = 4;
+                case 0:
+                    Console.WriteLine("Employee is Absent.");
+                    break;
+                case 1:
+                    Console.WriteLine("Employee is Present.");
+                    break;
+                    // default need not to be used
             }
-            else
+
+            switch (checkValue)
             {
-                dailyHours = 0;
+                case 0:
+                    Console.WriteLine("Employee Daily wage is : " + empDailyHrs * empDailyWage);
+                    Console.WriteLine("Part time Employee Daily wage is : " + pEmpDailyHrs * empDailyWage);
+                    break;
+                case 1:
+                    empDailyHrs = 8;
+                    pEmpDailyHrs = 4;
+                    Console.WriteLine("Employee Daily wage is : " + empDailyHrs * empDailyWage);
+                    Console.WriteLine("Part time Employee Daily wage is : " + pEmpDailyHrs * empDailyWage);
+                    break;
             }
-
-            dailyWage = dailyHours * 20;
-
-            Console.WriteLine("Daily wage is : " + dailyWage);
-
-
-        }
     }
 }
