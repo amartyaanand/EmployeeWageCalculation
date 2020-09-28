@@ -6,33 +6,24 @@ namespace EmployeeWage
     {
         static void Main(string[] args)
         {
+            int empMonWage = 0, isPresent = 1, empDailyHrs = 8, empDailyWage = 20, presentDays = 0, absentDays = 0;
             Random random = new Random();
-            int checkValue = random.Next(2);
-            int empDailyWage = 20, empDailyHrs = 0, pEmpDailyHrs = 0;
+            int checkValue;
 
-            switch (checkValue)
+            for (int i = 0; i < 20; i++)
             {
-                case 0:
-                    Console.WriteLine("Employee is Absent.");
-                    break;
-                case 1:
-                    Console.WriteLine("Employee is Present.");
-                    break;
-                    // default need not to be used
+                //using random to check employees daily attendance
+                checkValue = random.Next(2);
+                if (checkValue == isPresent)
+                {
+                    presentDays++;
+                    empMonWage += empDailyWage * empDailyHrs;
+                }
+                else
+                    absentDays++;
             }
-
-            switch (checkValue)
-            {
-                case 0:
-                    Console.WriteLine("Employee Daily wage is : " + empDailyHrs * empDailyWage);
-                    Console.WriteLine("Part time Employee Daily wage is : " + pEmpDailyHrs * empDailyWage);
-                    break;
-                case 1:
-                    empDailyHrs = 8;
-                    pEmpDailyHrs = 4;
-                    Console.WriteLine("Employee Daily wage is : " + empDailyHrs * empDailyWage);
-                    Console.WriteLine("Part time Employee Daily wage is : " + pEmpDailyHrs * empDailyWage);
-                    break;
-            }
+            Console.WriteLine($"Employee Attendance \nTotal working days per month 20 \nPresent for {presentDays} \nAbsent for {absentDays}");
+            Console.WriteLine("Employee's monthly wage is : " + empMonWage);
+        }
     }
 }
